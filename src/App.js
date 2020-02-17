@@ -12,34 +12,35 @@ import { Chart } from "react-google-charts";
 const axios = require('axios');
 
 const studyOptions = [
-  "numberOfBugs",
-  "delayToBeAssigned",
-  "totalTime",
-  "delayToSolve",
-  "passed",
-  "size",
+  "duration",
   "complexity",
-  "delayToSolve_size",
-  "delayToBeAssigned_size",
-  "totalTime_size",
-  "delayToSolve_complexity",
-  "delayToBeAssigned_complexity",
-  "totalTime_complexity",
-  "delayToSolve_bugs",
-  "delayToBeAssigned_bugs",
-  "totalTime_bugs",
-  "delayToSolve_assignements",
+  "delayToBeAssigned",
   "delayToBeAssigned_assignements",
-  "totalTime_assignements",
-  "delayToSolve_size_complexitye",
+  "delayToBeAssigned_bugs",
+  "delayToBeAssigned_complexity",
+  "delayToBeAssigned_size",
   "delayToBeAssigned_size_complexity",
-  "totalTime_size_complexity",
-  "delayToSolve_delayToBeAssigned",
   "delayToBeAssigned_totalTime",
+  "delayToSolve",
+  "delayToSolve_assignements",
+  "delayToSolve_bugs",
+  "delayToSolve_complexity",
+  "delayToSolve_delayToBeAssigned",
+  "delayToSolve_size",
+  "delayToSolve_size_complexity",
   "delayToSolve_totalTime",
+  "numberOfBugs",
   "numberBugs_size",
   "numberOfPlatforms",
-  "duration".duration
+  "passed",
+  "size",
+  "totalTime",
+  "totalTime_assignements",
+  "totalTime_bugs",
+  "totalTime_complexity",
+  "totalTime_size",
+  "totalTime_size_complexity",
+
 ]
 
 const fieldOptions=[
@@ -103,9 +104,14 @@ class App extends React.Component {
 
   changeFilter(event, filter){
     var change = {}
-    change[filter] = event.target.value
+    if (this.state[filter] == "on")
+      change[filter] = undefined
+    else
+      change[filter] = "on"
+
     console.log(change)
     this.setState(change)
+    console.log(this.state)
   }
 
   render(){

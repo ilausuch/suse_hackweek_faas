@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 1. Add your data to src/data.json
 
-Your json must have this format
+Be sure that your data has this format
 
 `
 {

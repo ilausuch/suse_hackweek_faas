@@ -63,7 +63,7 @@ export default class SmeltProcessor{
       }
 
       if (size > 0 && complexity > 0){
-        var delayToSolve_size_complexitye = delayToSolve / (size * complexity)
+        var delayToSolve_size_complexity = delayToSolve / (size * complexity)
         var delayToBeAssigned_size_complexity = delayToSolve / (size * complexity)
         var totalTime_size_complexity = totalTime / (size * complexity)
       }
@@ -82,7 +82,7 @@ export default class SmeltProcessor{
         delayToBeAssigned: delayToBeAssigned,
         totalTime: totalTime,
         delayToSolve: delayToSolve,
-        passed: passedNumeric,
+        passed: {passedNumeric},
         size: size,
         complexity: complexity,
         delayToSolve_size: delayToSolve_size,
@@ -97,7 +97,7 @@ export default class SmeltProcessor{
         delayToSolve_assignements: delayToSolve_assignements,
         delayToBeAssigned_assignements: delayToBeAssigned_assignements,
         totalTime_assignements: totalTime_assignements,
-        delayToSolve_size_complexitye: delayToSolve_size_complexitye,
+        delayToSolve_size_complexity: delayToSolve_size_complexity,
         delayToBeAssigned_size_complexity: delayToBeAssigned_size_complexity,
         totalTime_size_complexity: totalTime_size_complexity,
         delayToSolve_delayToBeAssigned: delayToSolve_delayToBeAssigned,
