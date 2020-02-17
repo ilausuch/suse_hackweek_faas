@@ -14,8 +14,8 @@ export default class SmeltProcessor{
       var assignements=0
       var delayToBeAssigned =0
       var passedNumeric = 0
-      var complexity = 0
-      var size = 0
+      var complexity = 2
+      var size = 3
       var delayToSolve_size = 0
       var numberOfBugs = item.bugs.length
       var numberOfPlatforms = item.products.length
@@ -33,8 +33,11 @@ export default class SmeltProcessor{
         passedNumeric = 1
 
       if (item.t_shirt && item.t_shirt.length > 0 ){
-        size = item.t_shirt[0]
-        complexity = item.t_shirt[1]
+        if (item.t_shirt[0] !== 0)
+          size = item.t_shirt[0]
+
+        if (item.t_shirt[1] !== 0)
+          complexity = item.t_shirt[1]
       }
 
       if (size > 0){

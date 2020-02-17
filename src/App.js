@@ -59,7 +59,6 @@ class App extends React.Component {
     sp: 40,
     ssp: 100,
     filter_totaltime: "on",
-    filter_size: "on",
     filter_passed: "on",
     filter_no_passed: undefined,
     from: undefined,
@@ -117,7 +116,7 @@ class App extends React.Component {
   render(){
     var compression = 1
     let { study, field, fp, sp, ssp,
-        filter_totaltime, filter_size, filter_passed, filter_no_passed,
+        filter_totaltime, filter_passed, filter_no_passed,
         from, to
     } = this.state;
 
@@ -126,7 +125,6 @@ class App extends React.Component {
     var ti = new CandlestickSeries()
     var serie = ti.process(this.events, "date", study, 1, (item) => {
       return (filter_totaltime !== "on" || item.totalTime > 0) &&
-        (filter_size !== "on" || item.size != 0) &&
         (filter_passed !== "on" || item.passed !== 1)
     })
 
@@ -222,12 +220,7 @@ class App extends React.Component {
 
             <div className="form-group form-check">
               <input type="checkbox" className="form-check-input" id="check1"  checked={filter_totaltime} onChange={e => this.changeFilter(e, 'filter_totaltime')}/>
-              <label className="form-check-label" htmlFor="check1">only totalTime size &gt;0</label>
-            </div>
-
-            <div className="form-group form-check">
-              <input type="checkbox" className="form-check-input" id="check2"  checked={filter_size} onChange={e => this.changeFilter(e, 'filter_size')}/>
-              <label className="form-check-label" htmlFor="check2">only t-shirt size &gt;0</label>
+              <label className="form-check-label" htmlFor="check1">only totalTime &gt;0</label>
             </div>
 
             <div className="form-group form-check">
