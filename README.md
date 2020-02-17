@@ -3,6 +3,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Preparation and execution
 
 1. Add your data to src/data.json
+
+Your json must have this format
+
+`
+{
+  "data": []
+}
+`
+
+Inside of data you can add your list.
+
 2. ./build.sh
 3. docker run -p 5000:5000 suse_hackweek_faas
 5. open in a browser http://localhost:5000
