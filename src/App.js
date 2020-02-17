@@ -32,7 +32,6 @@ const studyOptions = [
   "numberOfBugs",
   "numberBugs_size",
   "numberOfPlatforms",
-  "passed",
   "size",
   "totalTime",
   "totalTime_assignements",
@@ -40,7 +39,6 @@ const studyOptions = [
   "totalTime_complexity",
   "totalTime_size",
   "totalTime_size_complexity",
-
 ]
 
 const fieldOptions=[
@@ -108,9 +106,7 @@ class App extends React.Component {
     else
       change[filter] = "on"
 
-    console.log(change)
     this.setState(change)
-    console.log(this.state)
   }
 
   render(){
@@ -125,7 +121,8 @@ class App extends React.Component {
     var ti = new CandlestickSeries()
     var serie = ti.process(this.events, "date", study, 1, (item) => {
       return (filter_totaltime !== "on" || item.totalTime > 0) &&
-        (filter_passed !== "on" || item.passed !== 1)
+        (filter_no_passed !== "on" || item.passed === 0) &&
+        (filter_passed !== "on" || item.passed === 1)
     })
 
     let fromOptions = []

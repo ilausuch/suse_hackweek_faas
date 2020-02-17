@@ -85,7 +85,7 @@ export default class SmeltProcessor{
         delayToBeAssigned: delayToBeAssigned,
         totalTime: totalTime,
         delayToSolve: delayToSolve,
-        passed: {passedNumeric},
+        passed: passedNumeric,
         size: size,
         complexity: complexity,
         delayToSolve_size: delayToSolve_size,
