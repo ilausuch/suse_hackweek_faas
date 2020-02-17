@@ -68,10 +68,6 @@ class App extends React.Component {
   constructor(props){
     super(props)
 
-    axios.get("https://gitlab.suse.de/geor/smelt-data-hoarder/raw/log_hoarding/smelt/updates.json").then(response =>{
-      console.log("^^^^^^^^^^^^^^^^^^^^^^", response.data)
-    })
-
     this.smeltProcessor = new SmeltProcessor(data);
     this.events = this.smeltProcessor.process()
     console.log(this.events)
