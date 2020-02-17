@@ -57,7 +57,7 @@ class App extends React.Component {
     field: "sum",
     fp: 14,
     sp: 40,
-    ssp: 100,
+    ssp: 300,
     filter_totaltime: "on",
     filter_passed: "on",
     filter_no_passed: undefined,
