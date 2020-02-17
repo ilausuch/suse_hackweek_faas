@@ -14,6 +14,7 @@ const axios = require('axios');
 const studyOptions = [
   "duration",
   "complexity",
+  "count",
   "delayToBeAssigned",
   "delayToBeAssigned_assignements",
   "delayToBeAssigned_bugs",
@@ -45,8 +46,7 @@ const fieldOptions=[
   "adverage",
   "sum",
   "high",
-  "low",
-  "volume"
+  "low"
 ]
 
 class App extends React.Component {

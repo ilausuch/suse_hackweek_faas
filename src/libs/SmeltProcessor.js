@@ -19,6 +19,7 @@ export default class SmeltProcessor{
       var delayToSolve_size = 0
       var numberOfBugs = item.bugs.length
       var numberOfPlatforms = item.products.length
+      var count = 0
 
       var date = moment(item.creation_date,"YYYY/MM/DD")
 
@@ -81,6 +82,7 @@ export default class SmeltProcessor{
       this.data.push({
         date: date,
         dateOrder: date.format("YYYYMMDD"),
+        count: 1,
         numberOfBugs: numberOfBugs,
         delayToBeAssigned: delayToBeAssigned,
         totalTime: totalTime,
