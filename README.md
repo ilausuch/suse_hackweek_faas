@@ -1,10 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Preparation
+## Preparation and execution
 
-1. To run it from your computer requires nodejs and yarn
-2. Add your data to src/data.json
-3. yarn start
+1. Add your data to src/data.json
+2. ./build.sh
+3. docker run -p 5000:5000 suse_hackweek_faas
+5. open in a browser http://localhost:5000
 
 ## Available Scripts
 
