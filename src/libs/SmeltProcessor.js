@@ -7,7 +7,6 @@ export default class SmeltProcessor{
 
   process(){
     this.data = []
-
     this.raw.data.forEach((item)=>{
       var delayToSolve=0
       var totalTime=0
@@ -19,7 +18,10 @@ export default class SmeltProcessor{
       var delayToSolve_size = 0
       var numberOfBugs = item.bugs.length
       var numberOfPlatforms = item.products.length
-      
+      var durationAverage = 0
+      var durationAccumulated = 0
+      var durationCount = 0
+
       var date = moment(item.creation_date,"YYYY/MM/DD")
 
       if (item.dates && item.dates.length>0){
@@ -78,6 +80,16 @@ export default class SmeltProcessor{
         var delayToSolve_totalTime =  delayToSolve / totalTime
       }
 
+      if (item.durations.length > 0){
+        item.durations.forEach( item =>{
+          durationAccumulated += item
+          durationCount++
+        })
+        
+        durationAverage = durationAccumulated / durationCount
+      }
+
+
       this.data.push({
         date: date,
         dateOrder: date.format("YYYYMMDD"),
@@ -109,7 +121,9 @@ export default class SmeltProcessor{
         delayToSolve_totalTime: delayToSolve_totalTime,
         numberBugs_size:numberBugs_size,
         numberOfPlatforms:numberOfPlatforms,
-        duration: item.duration
+        durationAverage: durationAverage,
+        durationAccumulated: durationAccumulated,
+        durationCount: durationCount
       })
     })
 

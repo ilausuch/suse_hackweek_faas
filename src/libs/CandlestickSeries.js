@@ -36,23 +36,27 @@ export default class ClandleStickSeries{
       if (!currentCandleStick){
         currentCandleStick={
           period: period,
-          high: value,
-          low: value,
+          max: value,
+          min: value,
           open: value,
           close: value,
-          sum: value,
-          adverage: value,
-          volume: 1
+          accumulated: value,
+          average: value,
+          volume: 1,
+          list: [],
+          median: value
         }
         this.serie.push(currentCandleStick)
         currentPeriod = period
       }else{
-        currentCandleStick.low = Math.min(currentCandleStick.low, value)
-        currentCandleStick.high = Math.max(currentCandleStick.high, value)
+        currentCandleStick.min = Math.min(currentCandleStick.min, value)
+        currentCandleStick.max = Math.max(currentCandleStick.max, value)
         currentCandleStick.close = value
-        currentCandleStick.sum += value
+        currentCandleStick.accumulated += value
         currentCandleStick.volume ++
-        currentCandleStick.adverage = value / currentCandleStick.volume
+        currentCandleStick.average = value / currentCandleStick.volume
+        currentCandleStick.list.push(value)
+        currentCandleStick.median = currentCandleStick.list.sort()[Math.floor(currentCandleStick.list.length/2)]
       }
     })
 
@@ -95,8 +99,8 @@ export default class ClandleStickSeries{
     return TI.Stochastic.calculate({
       period: period,
       signalPeriod: signalPeriod,
-      high: this.extract("high"),
-      low: this.extract("low"),
+      max: this.extract("max"),
+      min: this.extract("min"),
       close: this.extract("close")
     })
   }
@@ -104,8 +108,8 @@ export default class ClandleStickSeries{
   atr(period){
     return TI.Stochastic.calculate({
       period: period,
-      high: this.extract("high"),
-      low: this.extract("low"),
+      max: this.extract("max"),
+      min: this.extract("min"),
       close: this.extract("close")
     })
   }

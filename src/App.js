@@ -29,6 +29,9 @@ const studyOptions = [
   "delayToSolve_size",
   "delayToSolve_size_complexity",
   "delayToSolve_totalTime",
+  "durationAverage",
+  "durationCount",
+  "durationAccumulated",
   "numberBugs_size",
   "numberOfBugs",
   "numberOfPlatforms",
@@ -39,20 +42,23 @@ const studyOptions = [
   "totalTime_bugs",
   "totalTime_complexity",
   "totalTime_size",
-  "totalTime_size_complexity",
+  "totalTime_size_complexity"
 ]
 
 const fieldOptions=[
-  "adverage",
-  "sum",
-  "high",
-  "low"
+  "average",
+  "accumulated",
+  "max",
+  "min",
+  "median"
 ]
+
+const fieldCompressionOptions = [1, 2, 7, 15, 30]
 
 class App extends React.Component {
   state = {
     study: "totalTime",
-    field: "sum",
+    field: "average",
     fp: 14,
     sp: 40,
     ssp: 300,
@@ -60,7 +66,8 @@ class App extends React.Component {
     filter_passed: "on",
     filter_no_passed: undefined,
     from: undefined,
-    to: undefined
+    to: undefined,
+    param_compression: 1
   }
 
   constructor(props){
@@ -109,17 +116,23 @@ class App extends React.Component {
     this.setState(change)
   }
 
+  changeParam(event, param){
+    var change = {}
+    change[param] = event.target.value
+    this.setState(change)
+  }
+
   render(){
-    var compression = 1
     let { study, field, fp, sp, ssp,
         filter_totaltime, filter_passed, filter_no_passed,
-        from, to
+        from, to,
+        param_compression
     } = this.state;
 
 
 
     var ti = new CandlestickSeries()
-    var serie = ti.process(this.events, "date", study, 1, (item) => {
+    var serie = ti.process(this.events, "date", study, param_compression, (item) => {
       return (filter_totaltime !== "on" || item.totalTime > 0) &&
         (filter_no_passed !== "on" || item.passed === 0) &&
         (filter_passed !== "on" || item.passed === 1)
@@ -228,6 +241,19 @@ class App extends React.Component {
             <div className="form-group form-check">
               <input type="checkbox" className="form-check-input" id="check4"  checked={filter_no_passed} onChange={e => this.changeFilter(e, 'filter_no_passed')}/>
               <label className="form-check-label" htmlFor="check4">only rejected and discarted</label>
+            </div>
+
+
+            <hr/>
+            <h2>Parameters</h2>
+
+            <div className="form-group">
+              <label htmlFor="toSelector">Compression</label>
+              <select id="compressionSelector" className="form-control"  value={param_compression} onChange={e => this.changeParam(e, "param_compression")}>
+                {fieldCompressionOptions.map(item =>
+                  <option value={item} key={"compressionSelector_"+item}>{item}</option>
+                )}
+              </select>
             </div>
 
           </div>
