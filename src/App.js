@@ -12,7 +12,6 @@ import { Chart } from "react-google-charts";
 const axios = require('axios');
 
 const studyOptions = [
-  "duration",
   "complexity",
   "delayToBeAssigned",
   "delayToBeAssigned_assignements",
