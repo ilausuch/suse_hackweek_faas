@@ -6,6 +6,7 @@ import './App.css';
 import CandlestickSeries from './libs/CandlestickSeries.js'
 import GoogleDriver from './libs/GoogleDriver.js'
 import SmeltProcessor from './libs/SmeltProcessor.js'
+import * as Icon from 'react-feather';
 
 import { render } from "react-dom";
 import { Chart } from "react-google-charts";
@@ -224,6 +225,15 @@ class App extends React.Component {
               </select>
             </div>
 
+            <div className="form-group">
+              <label htmlFor="toSelector">Compression</label>
+              <select id="compressionSelector" className="form-control"  value={param_compression} onChange={e => this.changeParam(e, "param_compression")}>
+                {fieldCompressionOptions.map(item =>
+                  <option value={item} key={"compressionSelector_"+item}>{item}</option>
+                )}
+              </select>
+            </div>
+
             <hr/>
             <h2>Filters</h2>
 
@@ -242,18 +252,13 @@ class App extends React.Component {
               <label className="form-check-label" htmlFor="check4">only rejected and discarted</label>
             </div>
 
+          <hr/>
 
-            <hr/>
-            <h2>Parameters</h2>
 
-            <div className="form-group">
-              <label htmlFor="toSelector">Compression</label>
-              <select id="compressionSelector" className="form-control"  value={param_compression} onChange={e => this.changeParam(e, "param_compression")}>
-                {fieldCompressionOptions.map(item =>
-                  <option value={item} key={"compressionSelector_"+item}>{item}</option>
-                )}
-              </select>
-            </div>
+          <p><a href="https://github.com/ilausuch/suse_hackweek_faas" className="stretched-link"><Icon.GitHub /> github project</a></p>
+          <p><a href="https://confluence.suse.com/display/~ILausuch/SUSE+hackweek+-+Performance+data+analysis" className="stretched-link"><Icon.HelpCircle />How to interpret the data</a></p>
+          <p><a href="https://hackweek.suse.com/projects/could-we-use-financial-prediction-methods-to-improve-our-quality-and-performance" className="stretched-link"><Icon.Info />Hackweek page</a></p>
+
 
           </div>
           <div className="col-10">

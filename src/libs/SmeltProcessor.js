@@ -85,7 +85,7 @@ export default class SmeltProcessor{
           durationAccumulated += item
           durationCount++
         })
-        
+
         durationAverage = durationAccumulated / durationCount
       }
 
