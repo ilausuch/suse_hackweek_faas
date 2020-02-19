@@ -255,9 +255,9 @@ class App extends React.Component {
           <hr/>
 
 
-          <p><a href="https://github.com/ilausuch/suse_hackweek_faas" className="stretched-link"><Icon.GitHub /> github project</a></p>
-          <p><a href="https://confluence.suse.com/display/~ILausuch/SUSE+hackweek+-+Performance+data+analysis" className="stretched-link"><Icon.HelpCircle />How to interpret the data</a></p>
-          <p><a href="https://hackweek.suse.com/projects/could-we-use-financial-prediction-methods-to-improve-our-quality-and-performance" className="stretched-link"><Icon.Info />Hackweek page</a></p>
+          <p><a href="https://github.com/ilausuch/suse_hackweek_faas" ><Icon.GitHub /> github project</a></p>
+          <p><a href="https://confluence.suse.com/display/~ILausuch/SUSE+hackweek+-+Performance+data+analysis"><Icon.HelpCircle />How to interpret the data</a></p>
+          <p><a href="https://hackweek.suse.com/projects/could-we-use-financial-prediction-methods-to-improve-our-quality-and-performance"><Icon.Info />Hackweek page</a></p>
 
 
           </div>
